@@ -1,0 +1,32 @@
+﻿<Window x:Class="mvvm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mvvm"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="Black">
+    <!-- Создаем новый VM и соединяем его со View -->
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="190" Width="222" >
+
+            <!--Binding, собственно, соединяет текстовое поле со свойством в VM -->
+            <!--UpdateSourceTrigger, в данном случае, выполняет передачу значение в VM в момент ввода -->
+            <TextBox Width="224" Text="{Binding Number1, UpdateSourceTrigger=PropertyChanged}" Height="59" RenderTransformOrigin="0.5,0.5">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.051"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox Width="226" Text="{Binding Number2, UpdateSourceTrigger=PropertyChanged}" Height="63"/>
+            <!--Mode=OneWay необходим для призязки свойства только для чтения -->
+            <TextBox Width="224" Text="{Binding Number3, Mode=OneWay}" IsReadOnly="True" Height="68"/>
+        </StackPanel>
+    </Grid>
+
+</Window>
+    
